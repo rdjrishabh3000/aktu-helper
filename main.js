@@ -1,21 +1,56 @@
-// Functionality: Search/Filter Subjects in real-time
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('subjectSearch');
-    const subjectList = document.getElementById('subjectList');
-    const subjectCards = subjectList.getElementsByClassName('subject-card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const subjectCards = document.querySelectorAll('.subject-card');
+    const sectionBlocks = document.querySelectorAll('.section-block');
 
-    searchInput.addEventListener('keyup', (e) => {
-        const searchString = e.target.value.toLowerCase();
+    let currentBranchFilter = 'all';
 
-        // Loop through all subject cards and hide those that don't match the query
-        Array.from(subjectCards).forEach((card) => {
-            const subjectName = card.dataset.subject.toLowerCase();
-            
-            if (subjectName.includes(searchString)) {
-                card.style.display = 'block'; // Show matching card
+    // Function to filter cards based on branch pill & search query
+    function applyFilters() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+        sectionBlocks.forEach(section => {
+            const sectionBranch = section.dataset.branch;
+            let visibleCardsInSection = 0;
+
+            const cards = section.querySelectorAll('.subject-card');
+            cards.forEach(card => {
+                const subjectText = card.dataset.subject ? card.dataset.subject.toLowerCase() : '';
+                const cardBranch = card.dataset.branch;
+
+                const matchesBranch = (currentBranchFilter === 'all') || (cardBranch === currentBranchFilter);
+                const matchesSearch = query === '' || subjectText.includes(query);
+
+                if (matchesBranch && matchesSearch) {
+                    card.style.display = 'block';
+                    visibleCardsInSection++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Hide whole section heading if no cards match
+            if (visibleCardsInSection > 0) {
+                section.style.display = 'block';
             } else {
-                card.style.display = 'none';  // Hide non-matching card
+                section.style.display = 'none';
             }
         });
+    }
+
+    // Event listener for Branch Filter Pills
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentBranchFilter = btn.dataset.filter;
+            applyFilters();
+        });
     });
+
+    // Event listener for Search Bar Input
+    if (searchInput) {
+        searchInput.addEventListener('keyup', applyFilters);
+    }
 });

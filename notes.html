@@ -4,7 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AKTU Notes & PYQ Library | B.Tech All Branches</title>
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
+  <style>
+    /* Branch Filter Pills Styles */
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: var(--accent-color);
+      border-color: var(--accent-color);
+      color: white;
+    }
+  </style>
 </head>
 <body>
 
@@ -13,16 +46,30 @@
     <nav>
       <a href="index.html">Home</a>
       <a href="notes.html" class="active">Notes & PYQs</a>
+      <a href="contribute.html">Upload Notes</a>
       <a href="calculator.html">SGPA Calculator</a>
-      <a href="https://oneview.aktu.ac.in" target="_blank" class="btn-link">AKTU OneView</a>
+      <a href="https://oneview.aktu.ac.in/oneview/oneview.aspx" target="_blank" rel="noopener noreferrer" class="btn-link">AKTU OneView</a>
     </nav>
   </header>
 
   <main class="notes-section">
     <h2>B.Tech Notes & Previous Year Questions</h2>
     <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-      Select or search your branch, subject, or elective to access notes and PYQs.
+      Select your branch or search for a subject to access notes and PYQs.
     </p>
+
+    <!-- BRANCH FILTER PILLS -->
+    <div class="filter-container">
+      <button class="filter-btn active" data-filter="all">All Subjects</button>
+      <button class="filter-btn" data-filter="first-year">1st Year</button>
+      <button class="filter-btn" data-filter="cse">CSE / IT</button>
+      <button class="filter-btn" data-filter="ece">ECE / EN</button>
+      <button class="filter-btn" data-filter="ee">EE / EEE</button>
+      <button class="filter-btn" data-filter="me">ME</button>
+      <button class="filter-btn" data-filter="ce">CE</button>
+      <button class="filter-btn" data-filter="humanities">Humanities</button>
+      <button class="filter-btn" data-filter="electives">Electives</button>
+    </div>
     
     <!-- Real-Time Search Bar -->
     <input type="text" id="subjectSearch" placeholder="🔍 Search any subject (e.g., Data Structures, SOM, UHVPE)...">
@@ -30,272 +77,283 @@
     <div id="subjectList">
 
       <!-- SECTION 1: FIRST YEAR COMMON SUBJECTS -->
-      <h3 class="section-title">1. First-Year Common Subjects (Semesters 1 & 2)</h3>
-      <div class="notes-grid">
-        <!-- Basic Sciences -->
-        <div class="subject-card" data-subject="Engineering Mathematics-I First Year Common Sem 1">
-          <h4>Engineering Mathematics-I</h4>
-          <p>Basic Sciences | Sem 1</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Engineering Mathematics-II First Year Common Sem 2">
-          <h4>Engineering Mathematics-II</h4>
-          <p>Basic Sciences | Sem 2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Engineering Physics First Year Common">
-          <h4>Engineering Physics</h4>
-          <p>Basic Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Engineering Chemistry First Year Common">
-          <h4>Engineering Chemistry</h4>
-          <p>Basic Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Environment & Ecology First Year Common">
-          <h4>Environment & Ecology</h4>
-          <p>Basic Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-
-        <!-- Engineering Sciences -->
-        <div class="subject-card" data-subject="Fundamentals of Electrical Engineering BEE">
-          <h4>Fundamentals of Electrical Engineering</h4>
-          <p>Engineering Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Fundamentals of Electronics Engineering">
-          <h4>Fundamentals of Electronics Engineering</h4>
-          <p>Engineering Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Fundamentals of Mechanical Engineering">
-          <h4>Fundamentals of Mechanical Engineering</h4>
-          <p>Engineering Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Programming for Problem Solving C Language PPS">
-          <h4>Programming for Problem Solving (C Language)</h4>
-          <p>Engineering Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Engineering Graphics & Design EGD">
-          <h4>Engineering Graphics & Design</h4>
-          <p>Engineering Sciences | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-
-        <!-- Humanities & Soft Skills -->
-        <div class="subject-card" data-subject="Soft Skills English Language">
-          <h4>Soft Skills / English Language</h4>
-          <p>Humanities | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Technical Communication">
-          <h4>Technical Communication</h4>
-          <p>Humanities | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Sports and Yoga NSS">
-          <h4>Sports and Yoga / NSS</h4>
-          <p>Mandatory Non-Credit | Sem 1/2</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="first-year">
+        <h3 class="section-title">1. First-Year Common Subjects (Semesters 1 & 2)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Engineering Mathematics-I First Year Common Sem 1" data-branch="first-year">
+            <h4>Engineering Mathematics-I</h4>
+            <p>Basic Sciences | Sem 1</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Engineering Mathematics-II First Year Common Sem 2" data-branch="first-year">
+            <h4>Engineering Mathematics-II</h4>
+            <p>Basic Sciences | Sem 2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Engineering Physics First Year Common" data-branch="first-year">
+            <h4>Engineering Physics</h4>
+            <p>Basic Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Engineering Chemistry First Year Common" data-branch="first-year">
+            <h4>Engineering Chemistry</h4>
+            <p>Basic Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Environment & Ecology First Year Common" data-branch="first-year">
+            <h4>Environment & Ecology</h4>
+            <p>Basic Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Fundamentals of Electrical Engineering BEE" data-branch="first-year">
+            <h4>Fundamentals of Electrical Engineering</h4>
+            <p>Engineering Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Fundamentals of Electronics Engineering" data-branch="first-year">
+            <h4>Fundamentals of Electronics Engineering</h4>
+            <p>Engineering Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Fundamentals of Mechanical Engineering" data-branch="first-year">
+            <h4>Fundamentals of Mechanical Engineering</h4>
+            <p>Engineering Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Programming for Problem Solving C Language PPS" data-branch="first-year">
+            <h4>Programming for Problem Solving (C Language)</h4>
+            <p>Engineering Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Engineering Graphics & Design EGD" data-branch="first-year">
+            <h4>Engineering Graphics & Design</h4>
+            <p>Engineering Sciences | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Soft Skills English Language" data-branch="first-year">
+            <h4>Soft Skills / English Language</h4>
+            <p>Humanities | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Technical Communication" data-branch="first-year">
+            <h4>Technical Communication</h4>
+            <p>Humanities | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Sports and Yoga NSS" data-branch="first-year">
+            <h4>Sports and Yoga / NSS</h4>
+            <p>Mandatory Non-Credit | Sem 1/2</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 2: COMPUTER SCIENCE & IT -->
-      <h3 class="section-title">2. Computer Science & IT (CSE / IT / AI / DS / IoT)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Mathematics-III IV Discrete Structures & Theory of Logic DSTL">
-          <h4>Discrete Structures & Theory of Logic</h4>
-          <p>CSE / IT | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Data Structures DS">
-          <h4>Data Structures</h4>
-          <p>CSE / IT | Sem 3</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Computer Organization & Architecture COA">
-          <h4>Computer Organization & Architecture</h4>
-          <p>CSE / IT | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Operating Systems OS">
-          <h4>Operating Systems</h4>
-          <p>CSE / IT | Sem 4/5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Theory of Automata and Formal Languages TAFL">
-          <h4>Theory of Automata and Formal Languages (TAFL)</h4>
-          <p>CSE / IT | Sem 4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Database Management Systems DBMS">
-          <h4>Database Management Systems (DBMS)</h4>
-          <p>CSE / IT | Sem 5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Design & Analysis of Algorithms DAA">
-          <h4>Design & Analysis of Algorithms (DAA)</h4>
-          <p>CSE / IT | Sem 5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Computer Networks CN">
-          <h4>Computer Networks</h4>
-          <p>CSE / IT | Sem 5/6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Web Technology WT">
-          <h4>Web Technology</h4>
-          <p>CSE / IT | Sem 6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Software Engineering SE">
-          <h4>Software Engineering</h4>
-          <p>CSE / IT | Sem 6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Object-Oriented Programming Java C++ OOPS">
-          <h4>Object-Oriented Programming (Java/C++)</h4>
-          <p>CSE / IT | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Artificial Intelligence Machine Learning Python Cyber Security">
-          <h4>AI & Machine Learning Tracks</h4>
-          <p>AI / DS / CSE | Sem 5-7</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="cse">
+        <h3 class="section-title">2. Computer Science & IT (CSE / IT / AI / DS / IoT)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Mathematics-III IV Discrete Structures & Theory of Logic DSTL" data-branch="cse">
+            <h4>Discrete Structures & Theory of Logic</h4>
+            <p>CSE / IT | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Data Structures DS" data-branch="cse">
+            <h4>Data Structures</h4>
+            <p>CSE / IT | Sem 3</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Computer Organization & Architecture COA" data-branch="cse">
+            <h4>Computer Organization & Architecture</h4>
+            <p>CSE / IT | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Operating Systems OS" data-branch="cse">
+            <h4>Operating Systems</h4>
+            <p>CSE / IT | Sem 4/5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Theory of Automata and Formal Languages TAFL" data-branch="cse">
+            <h4>Theory of Automata and Formal Languages (TAFL)</h4>
+            <p>CSE / IT | Sem 4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Database Management Systems DBMS" data-branch="cse">
+            <h4>Database Management Systems (DBMS)</h4>
+            <p>CSE / IT | Sem 5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Design & Analysis of Algorithms DAA" data-branch="cse">
+            <h4>Design & Analysis of Algorithms (DAA)</h4>
+            <p>CSE / IT | Sem 5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Computer Networks CN" data-branch="cse">
+            <h4>Computer Networks</h4>
+            <p>CSE / IT | Sem 5/6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Web Technology WT" data-branch="cse">
+            <h4>Web Technology</h4>
+            <p>CSE / IT | Sem 6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Software Engineering SE" data-branch="cse">
+            <h4>Software Engineering</h4>
+            <p>CSE / IT | Sem 6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Object-Oriented Programming Java C++ OOPS" data-branch="cse">
+            <h4>Object-Oriented Programming (Java/C++)</h4>
+            <p>CSE / IT | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Artificial Intelligence Machine Learning Python Cyber Security" data-branch="cse">
+            <h4>AI & Machine Learning Tracks</h4>
+            <p>AI / DS / CSE | Sem 5-7</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 3: ELECTRONICS & COMMUNICATION -->
-      <h3 class="section-title">3. Electronics & Communication Engineering (ECE / EN)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Network Analysis & Synthesis NAS">
-          <h4>Network Analysis & Synthesis</h4>
-          <p>ECE / EN | Sem 3</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Signals & Systems SS">
-          <h4>Signals & Systems</h4>
-          <p>ECE / EN | Sem 4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Electromagnetic Field Theory EMFT">
-          <h4>Electromagnetic Field Theory (EMFT)</h4>
-          <p>ECE | Sem 4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Control Systems CS">
-          <h4>Control Systems</h4>
-          <p>ECE / EE | Sem 5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Electronic Devices & Circuits Digital System Design DSD">
-          <h4>Digital System Design & EDC</h4>
-          <p>ECE | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Analog Integrated Circuits Op-Amps Microprocessors Microcontrollers">
-          <h4>Analog Integrated Circuits & Microprocessors</h4>
-          <p>ECE | Sem 5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="VLSI Design Communication Systems Digital Microwave Radar Optical">
-          <h4>VLSI & Communication Engineering</h4>
-          <p>ECE | Sem 6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="ece">
+        <h3 class="section-title">3. Electronics & Communication Engineering (ECE / EN)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Network Analysis & Synthesis NAS" data-branch="ece">
+            <h4>Network Analysis & Synthesis</h4>
+            <p>ECE / EN | Sem 3</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Signals & Systems SS" data-branch="ece">
+            <h4>Signals & Systems</h4>
+            <p>ECE / EN | Sem 4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Electromagnetic Field Theory EMFT" data-branch="ece">
+            <h4>Electromagnetic Field Theory (EMFT)</h4>
+            <p>ECE | Sem 4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Control Systems CS" data-branch="ece">
+            <h4>Control Systems</h4>
+            <p>ECE / EE | Sem 5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Electronic Devices & Circuits Digital System Design DSD" data-branch="ece">
+            <h4>Digital System Design & EDC</h4>
+            <p>ECE | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Analog Integrated Circuits Op-Amps Microprocessors Microcontrollers" data-branch="ece">
+            <h4>Analog Integrated Circuits & Microprocessors</h4>
+            <p>ECE | Sem 5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="VLSI Design Communication Systems Digital Microwave Radar Optical" data-branch="ece">
+            <h4>VLSI & Communication Engineering</h4>
+            <p>ECE | Sem 6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 4: ELECTRICAL ENGINEERING -->
-      <h3 class="section-title">4. Electrical Engineering (EE / EEE)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Electrical Circuit Analysis ECA">
-          <h4>Electrical Circuit Analysis</h4>
-          <p>EE / EEE | Sem 3</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Electrical Machines I II">
-          <h4>Electrical Machines (I & II)</h4>
-          <p>EE / EEE | Sem 4/5</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Power System I II Power Electronics Drives">
-          <h4>Power System & Power Electronics</h4>
-          <p>EE / EEE | Sem 5/6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="ee">
+        <h3 class="section-title">4. Electrical Engineering (EE / EEE)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Electrical Circuit Analysis ECA" data-branch="ee">
+            <h4>Electrical Circuit Analysis</h4>
+            <p>EE / EEE | Sem 3</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Electrical Machines I II" data-branch="ee">
+            <h4>Electrical Machines (I & II)</h4>
+            <p>EE / EEE | Sem 4/5</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Power System I II Power Electronics Drives" data-branch="ee">
+            <h4>Power System & Power Electronics</h4>
+            <p>EE / EEE | Sem 5/6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 5: MECHANICAL ENGINEERING -->
-      <h3 class="section-title">5. Mechanical Engineering (ME)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Material Science Strength of Materials SOM">
-          <h4>Material Science & Strength of Materials</h4>
-          <p>ME | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Applied Thermodynamics Fluid Mechanics Hydraulic Machines">
-          <h4>Thermodynamics & Fluid Mechanics</h4>
-          <p>ME | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Theory of Machines TOM Design Machine Elements Heat Transfer IC Engines CAD CAM">
-          <h4>TOM, Machine Design & Heat Transfer</h4>
-          <p>ME | Sem 5/6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="me">
+        <h3 class="section-title">5. Mechanical Engineering (ME)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Material Science Strength of Materials SOM" data-branch="me">
+            <h4>Material Science & Strength of Materials</h4>
+            <p>ME | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Applied Thermodynamics Fluid Mechanics Hydraulic Machines" data-branch="me">
+            <h4>Thermodynamics & Fluid Mechanics</h4>
+            <p>ME | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Theory of Machines TOM Design Machine Elements Heat Transfer IC Engines CAD CAM" data-branch="me">
+            <h4>TOM, Machine Design & Heat Transfer</h4>
+            <p>ME | Sem 5/6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 6: CIVIL ENGINEERING -->
-      <h3 class="section-title">6. Civil Engineering (CE)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Building Materials Construction Surveying Fluid Mechanics Mechanics Solids">
-          <h4>Building Materials & Surveying</h4>
-          <p>CE | Sem 3/4</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Structural Analysis Geotechnical Soil Mechanics Transportation Hydrology">
-          <h4>Structural Analysis & Soil Mechanics</h4>
-          <p>CE | Sem 5/6</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="ce">
+        <h3 class="section-title">6. Civil Engineering (CE)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Building Materials Construction Surveying Fluid Mechanics Mechanics Solids" data-branch="ce">
+            <h4>Building Materials & Surveying</h4>
+            <p>CE | Sem 3/4</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Structural Analysis Geotechnical Soil Mechanics Transportation Hydrology" data-branch="ce">
+            <h4>Structural Analysis & Soil Mechanics</h4>
+            <p>CE | Sem 5/6</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 7: HUMANITIES, MANAGEMENT & VALUE EDUCATION -->
-      <h3 class="section-title">7. Humanities, Management & Value Education</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Universal Human Values & Professional Ethics UHVPE">
-          <h4>Universal Human Values & Professional Ethics (UHVPE)</h4>
-          <p>Mandatory | All Branches</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Indian Tradition Culture Society Constitution of India">
-          <h4>Indian Culture & Constitution of India</h4>
-          <p>Mandatory | All Branches</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Law and Engineering Economics Management Project Management">
-          <h4>Law & Engineering Economics</h4>
-          <p>Management | All Branches</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="humanities">
+        <h3 class="section-title">7. Humanities, Management & Value Education</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Universal Human Values & Professional Ethics UHVPE" data-branch="humanities">
+            <h4>Universal Human Values & Professional Ethics (UHVPE)</h4>
+            <p>Mandatory | All Branches</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Indian Tradition Culture Society Constitution of India" data-branch="humanities">
+            <h4>Indian Culture & Constitution of India</h4>
+            <p>Mandatory | All Branches</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Law and Engineering Economics Management Project Management" data-branch="humanities">
+            <h4>Law & Engineering Economics</h4>
+            <p>Management | All Branches</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
       <!-- SECTION 8: ELECTIVES -->
-      <h3 class="section-title">8. Departmental & Open Electives (Sem 5 to 8)</h3>
-      <div class="notes-grid">
-        <div class="subject-card" data-subject="Cloud Computing Big Data Analytics Cryptography IoT Deep Learning NLP Image Processing">
-          <h4>CS / IT Electives (Cloud, Big Data, ML, NLP)</h4>
-          <p>Electives | Sem 5-8</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
-        </div>
-        <div class="subject-card" data-subject="Energy Science Renewable Energy Laser Systems Robotics Automation Disaster Management Operations Research">
-          <h4>Open Electives (Robotics, Renewable Energy, Disaster Mgmt)</h4>
-          <p>Open Elective | Cross-Branch</p>
-          <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+      <div class="section-block" data-branch="electives">
+        <h3 class="section-title">8. Departmental & Open Electives (Sem 5 to 8)</h3>
+        <div class="notes-grid">
+          <div class="subject-card" data-subject="Cloud Computing Big Data Analytics Cryptography IoT Deep Learning NLP Image Processing" data-branch="electives">
+            <h4>CS / IT Electives (Cloud, Big Data, ML, NLP)</h4>
+            <p>Electives | Sem 5-8</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
+          <div class="subject-card" data-subject="Energy Science Renewable Energy Laser Systems Robotics Automation Disaster Management Operations Research" data-branch="electives">
+            <h4>Open Electives (Robotics, Renewable Energy, Disaster Mgmt)</h4>
+            <p>Open Elective | Cross-Branch</p>
+            <div class="btn-group"><a href="#" class="mini-btn notes-download">Notes</a><a href="#" class="mini-btn pyq-download">PYQs</a></div>
+          </div>
         </div>
       </div>
 
