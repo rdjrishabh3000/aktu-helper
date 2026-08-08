@@ -198,3 +198,85 @@ nav a:hover {
   background-color: #8b5cf6; /* Purple */
   color: white;
 }
+.section-title {
+  color: var(--accent-color);
+  margin: 2.5rem 0 1rem 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+/* ==========================================
+   MOBILE HAMBURGER MENU STYLES
+   ========================================== */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Transform hamburger into 'X' when active */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* Mobile Responsive Breakpoint */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #0f172a;
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 0;
+    display: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    padding: 0.8rem 1.5rem;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+  }
+
+  nav a.btn-link {
+    margin: 0.5rem 1.5rem;
+    width: calc(100% - 3rem);
+    text-align: center;
+  }
+}

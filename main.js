@@ -54,3 +54,22 @@ document.addEventListener('DOMContentLoaded', () => {
         searchInput.addEventListener('keyup', applyFilters);
     }
 });
+
+// Mobile Hamburger Navigation Toggle
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+
+if (hamburger && navMenu) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('show');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+      hamburger.classList.remove('active');
+      navMenu.classList.remove('show');
+    }
+  });
+}
