@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AKTU SGPA Calculator | AKTU Helper</title>
+  <link rel="stylesheet" href="style.css?v=2">
+  <style>
+    .calc-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+    .subject-row {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .subject-row input, .subject-row select {
+      padding: 0.6rem;
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      color: white;
+      border-radius: 6px;
+      flex: 1;
+    }
+    .calc-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .result {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">AKTU Helper</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="notes.html">Notes & PYQs</a>
+      <a href="calculator.html" class="active">SGPA Calculator</a>
+      <a href="https://oneview.aktu.ac.in" target="_blank" class="btn-link">AKTU OneView</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h1>AKTU SGPA Calculator</h1>
+    <p>Select your grades and subject credits to compute your semester SGPA.</p>
+
+    <div class="calc-container">
+      <div id="subjectRows">
+        <!-- Default 4 Subject Rows -->
+        <div class="subject-row">
+          <input type="text" placeholder="Subject Name (Optional)">
+          <select class="credits">
+            <option value="4">4 Credits</option>
+            <option value="3">3 Credits</option>
+            <option value="2">2 Credits</option>
+            <option value="1">1 Credit</option>
+          </select>
+          <select class="grade">
+            <option value="10">S / O (10)</option>
+            <option value="9">A+ (9)</option>
+            <option value="8">A (8)</option>
+            <option value="7">B+ (7)</option>
+            <option value="6">B (6)</option>
+            <option value="5">C (5)</option>
+            <option value="0">F (0)</option>
+          </select>
+        </div>
+        <div class="subject-row">
+          <input type="text" placeholder="Subject Name (Optional)">
+          <select class="credits">
+            <option value="4">4 Credits</option>
+            <option value="3">3 Credits</option>
+            <option value="2">2 Credits</option>
+            <option value="1">1 Credit</option>
+          </select>
+          <select class="grade">
+            <option value="10">S / O (10)</option>
+            <option value="9">A+ (9)</option>
+            <option value="8">A (8)</option>
+            <option value="7">B+ (7)</option>
+            <option value="6">B (6)</option>
+            <option value="5">C (5)</option>
+            <option value="0">F (0)</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="calc-btn" onclick="calculateSGPA()">Calculate SGPA</button>
+      <div class="result" id="sgpaResult"></div>
+    </div>
+  </main>
+
+  <script>
+    function calculateSGPA() {
+      const credits = document.querySelectorAll('.credits');
+      const grades = document.querySelectorAll('.grade');
+      
+      let totalPoints = 0;
+      let totalCredits = 0;
+
+      for (let i = 0; i < credits.length; i++) {
+        let creditVal = parseFloat(credits[i].value);
+        let gradeVal = parseFloat(grades[i].value);
+
+        totalPoints += creditVal * gradeVal;
+        totalCredits += creditVal;
+      }
+
+      let sgpa = (totalPoints / totalCredits).toFixed(2);
+      document.getElementById('sgpaResult').innerText = "Your SGPA: " + sgpa;
+    }
+  </script>
+</body>
+</html>
