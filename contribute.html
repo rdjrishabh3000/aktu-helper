@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribute Study Material | AKTU Helper</title>
+  <link rel="stylesheet" href="style.css?v=2">
+  <style>
+    .form-wrapper {
+      max-width: 750px;
+      margin: 2rem auto;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ffffff; /* White background ensures Google Form internal text remains clear */
+    }
+
+    .form-container iframe {
+      width: 100%;
+      height: 1150px;
+      border: none;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .form-wrapper {
+        padding: 0.5rem;
+        margin: 1rem;
+      }
+      .form-container iframe {
+        height: 1250px; /* Slightly taller for mobile layout responsiveness */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">AKTU Helper</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="notes.html">Notes & PYQs</a>
+      <a href="contribute.html" class="active">Upload Notes</a>
+      <a href="calculator.html">SGPA Calculator</a>
+      <a href="https://oneview.aktu.ac.in" target="_blank" class="btn-link">AKTU OneView</a>
+    </nav>
+  </header>
+
+  <main class="hero">
+    <h1>Upload Notes & PYQs</h1>
+    <p>Help your fellow AKTU students by sharing unit notes, question papers, or drive links.</p>
+
+    <div class="form-wrapper">
+      <div class="form-container">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSff_Q022oj2Y0pKDa1N72epwxCAyPJt1dX84Traz1wDK49sBw/viewform?embedded=true" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
