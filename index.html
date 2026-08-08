@@ -3,96 +3,150 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AKTU Helper | Notes, PYQs & Tools</title>
-  <!-- Direct link to your local CSS file -->
-  <link rel="stylesheet" href="style.css">
+  <title>AKTU Helper | Notes, PYQs & SGPA Calculator</title>
+  <link rel="stylesheet" href="style.css?v=4">
+  <style>
+    /* Quick Links Grid Section */
+    .links-section {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .links-section h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 1.8rem;
+    }
+
+    .links-section p {
+      text-align: center;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .portal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .portal-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent-color);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .portal-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .portal-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .portal-card p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.2rem;
+      text-align: left;
+    }
+
+    .portal-link-btn {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-color);
+    }
+
+    .portal-card:hover .portal-link-btn {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
- <header>
+  <header>
     <div class="logo">AKTU Helper</div>
     <nav>
       <a href="index.html" class="active">Home</a>
       <a href="notes.html">Notes & PYQs</a>
       <a href="contribute.html">Upload Notes</a>
       <a href="calculator.html">SGPA Calculator</a>
-      <a href="https://oneview.aktu.ac.in" target="_blank" class="btn-link">AKTU OneView</a>
+      <a href="https://oneview.aktu.ac.in/oneview/oneview.aspx" target="_blank" rel="noopener noreferrer" class="btn-link">AKTU OneView</a>
     </nav>
   </header>
 
-  <main id="home" class="hero">
-    <h1>All-in-One Resources for AKTU Students</h1>
-    <p>Download previous year question papers, access subject notes, and calculate your SGPA instantly.</p>
-    
-    <div class="card-grid">
-      <div class="card">
-        <h3>📚 B.Tech Notes</h3>
-        <p>Branch-wise syllabus and unit notes for 1st to 4th year.</p>
-        <a href="notes.html" class="card-btn">Explore Notes</a>
+  <main>
+    <section class="hero">
+      <h1>Your Ultimate AKTU Academic Companion</h1>
+      <p>Access B.Tech lecture notes, previous year question papers (PYQs), syllabus, and calculate your SGPA accurately in seconds.</p>
+      <div class="hero-buttons">
+        <a href="notes.html" class="btn primary">Browse Notes & PYQs</a>
+        <a href="calculator.html" class="btn secondary">Calculate SGPA</a>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>📄 PYQ Library</h3>
-        <p>End-semester and sessional question papers with solutions.</p>
-        <a href="notes.html" class="card-btn">Find Papers</a>
-      </div>
+    <!-- PORTALS & QUICK LINKS SECTION -->
+    <section class="links-section">
+      <h2>Important AKTU Portals & Quick Links</h2>
+      <p>Direct access to essential university resources and official portals.</p>
 
-      <div class="card">
-        <h3>🧮 SGPA Calculator</h3>
-        <p>Calculate your semester SGPA accurately according to AKTU credits.</p>
-        <a href="calculator.html" class="card-btn">Calculate Now</a>
+      <div class="links-grid">
+        <a href="https://oneview.aktu.ac.in/oneview/oneview.aspx" target="_blank" rel="noopener noreferrer" class="portal-card">
+          <div>
+            <div class="portal-icon">📊</div>
+            <h3>AKTU OneView</h3>
+            <p>Check semester results, back paper marks, and complete academic transcript history.</p>
+          </div>
+          <span class="portal-link-btn">Open OneView Portal &rarr;</span>
+        </a>
+
+        <a href="https://erp.aktu.ac.in/" target="_blank" rel="noopener noreferrer" class="portal-card">
+          <div>
+            <div class="portal-icon">🔐</div>
+            <h3>AKTU ERP Portal</h3>
+            <p>Fill exam forms, download admit cards, check fee status, and manage student profile.</p>
+          </div>
+          <span class="portal-link-btn">Open ERP Portal &rarr;</span>
+        </a>
+
+        <a href="https://aktu.ac.in/syllabus.html" target="_blank" rel="noopener noreferrer" class="portal-card">
+          <div>
+            <div class="portal-icon">📚</div>
+            <h3>Official Syllabus PDFs</h3>
+            <p>Download official scheme and evaluation syllabus for all B.Tech branches and semesters.</p>
+          </div>
+          <span class="portal-link-btn">View Syllabus Directory &rarr;</span>
+        </a>
+
+        <a href="https://aktu.ac.in/circulars.html" target="_blank" rel="noopener noreferrer" class="portal-card">
+          <div>
+            <div class="portal-icon">📢</div>
+            <h3>Circulars & Notices</h3>
+            <p>Stay updated with official university press releases, exam schedules, and notifications.</p>
+          </div>
+          <span class="portal-link-btn">View Circulars &rarr;</span>
+        </a>
       </div>
-    </div>
+    </section>
   </main>
-
-  <section id="notes" class="notes-section">
-    <h2>Subject Notes & PYQs</h2>
-    
-    <!-- INTERACTIVE FEATURE: SEARCH FILTER -->
-    <input type="text" id="subjectSearch" placeholder="Search subjects (e.g., Operating System)...">
-
-    <div class="notes-grid" id="subjectList">
-      <!-- These are sample cards that JS will filter -->
-      <div class="subject-card" data-subject="Operating System">
-        <h4>Operating System</h4>
-        <p>CSE | Sem 5</p>
-        <div class="btn-group">
-          <a href="#" class="mini-btn notes-download">Notes</a>
-          <a href="#" class="mini-btn pyq-download">PYQs</a>
-        </div>
-      </div>
-
-      <div class="subject-card" data-subject="Database Management System">
-        <h4>Database Management System</h4>
-        <p>CSE/IT | Sem 5</p>
-        <div class="btn-group">
-          <a href="#" class="mini-btn notes-download">Notes</a>
-          <a href="#" class="mini-btn pyq-download">PYQs</a>
-        </div>
-      </div>
-
-      <div class="subject-card" data-subject="Data Structures">
-        <h4>Data Structures</h4>
-        <p>CSE/ECE/IT | Sem 3</p>
-        <div class="btn-group">
-          <a href="#" class="mini-btn notes-download">Notes</a>
-          <a href="#" class="mini-btn pyq-download">PYQs</a>
-        </div>
-      </div>
-      
-      <div class="subject-card" data-subject="Engineering Mathematics-I">
-        <h4>Engineering Mathematics-I</h4>
-        <p>All Branches | Sem 1</p>
-        <div class="btn-group">
-          <a href="#" class="mini-btn notes-download">Notes</a>
-          <a href="#" class="mini-btn pyq-download">PYQs</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Linking the interaction logic -->
-  <script src="main.js"></script>
 
 </body>
 </html>
