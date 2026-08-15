@@ -280,3 +280,57 @@ nav a:hover {
     text-align: center;
   }
 }
+.add-notes-section {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.add-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.input-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.input-group input {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.input-group input:focus {
+  border-color: #0070f3;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 12px;
+  background-color: #0070f3;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #0051a2;
+}
