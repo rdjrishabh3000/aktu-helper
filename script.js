@@ -1,13 +1,19 @@
+// AI Chat Widget Configuration
+const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // -------------------------------------------------------------
+  // 1. NOTES & PYQS FORM & FILTER LOGIC
+  // -------------------------------------------------------------
   const form = document.getElementById("addNotesForm");
   const searchInput = document.getElementById("searchInput");
   const filterBranch = document.getElementById("filterBranch");
   const filterSem = document.getElementById("filterSem");
 
-  // Load existing notes saved in LocalStorage
+  // Load existing saved notes from browser storage
   loadSavedNotes();
 
-  // 1. Handle Form Submission
+  // Form submission handler
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -32,26 +38,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // 2. Attach Filter Listeners
+  // Attach search and filter event listeners
   if (searchInput) searchInput.addEventListener("input", filterCards);
   if (filterBranch) filterBranch.addEventListener("change", filterCards);
   if (filterSem) filterSem.addEventListener("change", filterCards);
+
+  // -------------------------------------------------------------
+  // 2. FLOATING AI ASSISTANT LOGIC
+  // -------------------------------------------------------------
+  const toggleBtn = document.getElementById("ai-chat-toggle");
+  const closeBtn = document.getElementById("ai-chat-close");
+  const chatWindow = document.getElementById("ai-chat-window");
+  const sendBtn = document.getElementById("ai-chat-send");
+  const inputField = document.getElementById("ai-chat-input");
+
+  if (toggleBtn) {
+    // Toggle Window Visibility
+    toggleBtn.addEventListener("click", () => chatWindow.classList.toggle("ai-hidden"));
+    closeBtn.addEventListener("click", () => chatWindow.classList.add("ai-hidden"));
+
+    // Send Message Triggers
+    sendBtn.addEventListener("click", handleSend);
+    inputField.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") handleSend();
+    });
+  }
 });
 
-// Save to browser storage
+/* LocalStorage Functions */
 function saveNoteToStorage(note) {
   let notes = JSON.parse(localStorage.getItem("aktu_user_notes")) || [];
   notes.push(note);
   localStorage.setItem("aktu_user_notes", JSON.stringify(notes));
 }
 
-// Load notes from storage on boot
 function loadSavedNotes() {
   let notes = JSON.parse(localStorage.getItem("aktu_user_notes")) || [];
   notes.forEach(renderCard);
 }
 
-// Generate Card HTML and append to container
+/* UI Rendering Functions */
 function renderCard(note) {
   const container = document.getElementById("notesContainer");
   if (!container) return;
@@ -73,7 +99,7 @@ function renderCard(note) {
   container.insertAdjacentHTML("beforeend", cardHTML);
 }
 
-// Combined Search + Branch + Semester Filter
+/* Multi-Filter Search Engine */
 function filterCards() {
   const query = document.getElementById("searchInput").value.toLowerCase();
   const selectedBranch = document.getElementById("filterBranch").value;
@@ -89,11 +115,65 @@ function filterCards() {
     const matchesBranch = selectedBranch === "ALL" || cardBranch === selectedBranch;
     const matchesSem = selectedSem === "ALL" || cardSem === selectedSem;
 
-    // Show card only if all three filters pass
     if (matchesSearch && matchesBranch && matchesSem) {
       card.style.display = "flex";
     } else {
       card.style.display = "none";
     }
   });
+}
+
+/* AI Assistant Request Handler */
+async function handleSend() {
+  const input = document.getElementById("ai-chat-input");
+  const userText = input.value.trim();
+
+  if (!userText) return;
+
+  // Append user prompt
+  appendMessage(userText, "user-msg");
+  input.value = "";
+
+  // Append placeholder loading message
+  const loadingId = "loading-" + Date.now();
+  appendMessage("Thinking...", "bot-msg", loadingId);
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contents: [
+            {
+              parts: [
+                {
+                  text: `You are an expert engineering tutor for AKTU university students. Provide concise, accurate, and easy-to-understand explanations for exam preparation.\n\nUser Question: ${userText}`
+                }
+              ]
+            }
+          ]
+        })
+      }
+    );
+
+    const data = await response.json();
+    const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process an answer at this moment.";
+
+    // Replace loading text with response
+    document.getElementById(loadingId).innerText = botReply;
+  } catch (error) {
+    document.getElementById(loadingId).innerText = "Error connecting to AI Tutor. Please check your connection.";
+  }
+}
+
+function appendMessage(text, className, elementId = null) {
+  const container = document.getElementById("ai-chat-messages");
+  const msgDiv = document.createElement("div");
+  msgDiv.className = `ai-msg ${className}`;
+  if (elementId) msgDiv.id = elementId;
+  msgDiv.innerText = text;
+  container.appendChild(msgDiv);
+  container.scrollTop = container.scrollHeight;
 }
