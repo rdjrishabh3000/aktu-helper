@@ -130,7 +130,7 @@ async function handleSend() {
 
   if (!userText) return;
 
-  // Append user prompt
+  // Append user message
   appendMessage(userText, "user-msg");
   input.value = "";
 
@@ -139,32 +139,19 @@ async function handleSend() {
   appendMessage("Thinking...", "bot-msg", loadingId);
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: `You are an expert engineering tutor for AKTU university students. Provide concise, accurate, and easy-to-understand explanations for exam preparation.\n\nUser Question: ${userText}`
-                }
-              ]
-            }
-          ]
-        })
-      }
-    );
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: userText })
+    });
 
     const data = await response.json();
-    const botReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't process an answer at this moment.";
+    const botReply = data.reply || data.error || "Sorry, I couldn't fetch an answer.";
 
-    // Replace loading text with response
+    // Update message placeholder
     document.getElementById(loadingId).innerText = botReply;
   } catch (error) {
-    document.getElementById(loadingId).innerText = "Error connecting to AI Tutor. Please check your connection.";
+    document.getElementById(loadingId).innerText = "Error connecting to AI Tutor. Please try again.";
   }
 }
 

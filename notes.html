@@ -5,178 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Notes & PYQs - AKTU Helper</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* Section Containers */
-    .add-notes-section, .filter-section {
-      max-width: 700px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #121212;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-
-    .add-notes-section h2, .filter-section h3 {
-      margin-top: 0;
-      margin-bottom: 15px;
-      color: #ffffff;
-    }
-
-    /* Form Layout */
-    .form-row {
-      display: flex;
-      gap: 12px;
-    }
-
-    .form-row .input-group {
-      flex: 1;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 15px;
-      text-align: left;
-    }
-
-    .input-group label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #b0b0b0;
-    }
-
-    .input-group input, .input-group select {
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1px solid #333;
-      background-color: #1e1e1e;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.2s;
-    }
-
-    .input-group input:focus, .input-group select:focus {
-      border-color: #0070f3;
-    }
-
-    .btn-submit {
-      width: 100%;
-      padding: 12px;
-      background-color: #0070f3;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .btn-submit:hover {
-      background-color: #0051a2;
-    }
-
-    /* Filter Controls Styling */
-    .filter-container {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .filter-container input {
-      flex: 2;
-      min-width: 180px;
-    }
-
-    .filter-container select {
-      flex: 1;
-      min-width: 130px;
-    }
-
-    /* Grid & Cards Layout */
-    .notes-grid-section {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-
-    .notes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #181818;
-      border: 1px solid #2a2a2a;
-      padding: 20px;
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-3px);
-      border-color: #0070f3;
-    }
-
-    .badge-container {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 10px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 3px 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      border-radius: 4px;
-      color: #fff;
-    }
-
-    .badge-sem {
-      background-color: #0070f3;
-    }
-
-    .badge-branch {
-      background-color: #7928ca;
-    }
-
-    .card h3 {
-      margin: 0 0 8px 0;
-      font-size: 1.15rem;
-      color: #fff;
-    }
-
-    .btn-view {
-      display: block;
-      text-align: center;
-      padding: 10px;
-      background-color: #222;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      border: 1px solid #444;
-      font-weight: 500;
-      margin-top: 15px;
-      transition: background-color 0.2s;
-    }
-
-    .btn-view:hover {
-      background-color: #0070f3;
-      border-color: #0070f3;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header>
     <nav class="navbar">
       <div class="logo">AKTU Helper</div>
@@ -188,7 +19,6 @@
   </header>
 
   <main>
-    <!-- 1. Add Notes Form -->
     <section class="add-notes-section">
       <h2 style="text-align: center;">Add New Subject Notes</h2>
       <form id="addNotesForm">
@@ -234,7 +64,6 @@
       </form>
     </section>
 
-    <!-- 2. Search & Multi-Filter Section -->
     <section class="filter-section">
       <h3>Filter Notes</h3>
       <div class="filter-container">
@@ -264,10 +93,8 @@
       </div>
     </section>
 
-    <!-- 3. Notes Display Grid -->
     <section class="notes-grid-section">
       <div id="notesContainer" class="notes-grid">
-        <!-- Default static example card -->
         <div class="card" data-branch="ALLIED" data-sem="Sem 1">
           <div>
             <div class="badge-container">
@@ -282,6 +109,22 @@
       </div>
     </section>
   </main>
+
+  <button id="ai-chat-toggle" class="ai-chat-toggle">⚡ AKTU AI</button>
+
+  <div id="ai-chat-window" class="ai-chat-window ai-hidden">
+    <div class="ai-chat-header">
+      <span>AKTU AI Tutor</span>
+      <button id="ai-chat-close">&times;</button>
+    </div>
+    <div id="ai-chat-messages" class="ai-chat-messages">
+      <div class="ai-msg bot-msg">Hey! I'm your AKTU study assistant. Ask me anything about your syllabus or exam topics!</div>
+    </div>
+    <div class="ai-chat-input-area">
+      <input type="text" id="ai-chat-input" placeholder="Ask a question..." />
+      <button id="ai-chat-send">Send</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

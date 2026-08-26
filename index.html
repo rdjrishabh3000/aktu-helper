@@ -1,156 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AKTU Helper | Notes, PYQs & SGPA Calculator</title>
-  <link rel="stylesheet" href="style.css?v=4">
-  <style>
-    /* Quick Links Grid Section */
-    .links-section {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .links-section h2 {
-      text-align: center;
-      margin-bottom: 0.5rem;
-      font-size: 1.8rem;
-    }
-
-    .links-section p {
-      text-align: center;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.2rem;
-    }
-
-    .portal-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .portal-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent-color);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-    }
-
-    .portal-icon {
-      font-size: 2rem;
-      margin-bottom: 0.8rem;
-    }
-
-    .portal-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-primary);
-    }
-
-    .portal-card p {
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-      margin-bottom: 1.2rem;
-      text-align: left;
-    }
-
-    .portal-link-btn {
-      display: inline-block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--accent-color);
-    }
-
-    .portal-card:hover .portal-link-btn {
-      text-decoration: underline;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKTU Helper - Home</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
- <header>
-    <div class="logo">AKTU Helper</div>
-    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <nav id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="notes.html">Notes & PYQs</a>
-      <a href="calculator.html">SGPA Calculator</a>
-      <a href="https://erp.aktu.ac.in/webpages/oneview/oneview.aspx" target="_blank" rel="noopener noreferrer" class="btn-link">AKTU OneView</a>
+  <header>
+    <nav class="navbar">
+      <div class="logo">AKTU Helper</div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="notes.html">Notes & PYQs</a></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Your Ultimate AKTU Academic Companion</h1>
-      <p>Access B.Tech lecture notes, previous year question papers (PYQs), syllabus, and calculate your SGPA accurately in seconds.</p>
-      <div class="hero-buttons">
-        <a href="notes.html" class="btn primary">Browse Notes & PYQs</a>
-        <a href="calculator.html" class="btn secondary">Calculate SGPA</a>
-      </div>
+    <section class="hero-section">
+      <h1>Welcome to AKTU Helper</h1>
+      <p>Your resource hub for AKTU engineering notes, question papers, and official portals.</p>
+      <a href="notes.html" class="btn-submit" style="display: inline-block; width: auto; text-decoration: none; padding: 12px 28px;">Browse Notes & PYQs</a>
     </section>
 
-    <!-- PORTALS & QUICK LINKS SECTION -->
-    <section class="links-section">
-      <h2>Important AKTU Portals & Quick Links</h2>
-      <p>Direct access to essential university resources and official portals.</p>
+    <section class="notes-grid-section">
+      <h2 class="section-title">Quick AKTU Portals</h2>
+      <div class="notes-grid">
+        
+        <div class="card" style="text-align: center;">
+          <h3>OneView Result</h3>
+          <p style="font-size: 0.85rem; color: #888;">Check semester results & marksheet</p>
+          <a href="https://oneview.aktu.ac.in/" target="_blank" rel="noopener noreferrer" class="btn-view">Access Portal</a>
+        </div>
 
-      <div class="links-grid">
-       <a href="https://erp.aktu.ac.in/webpages/oneview/oneview.aspx" target="_blank" rel="noopener noreferrer" class="portal-card">
-  <div>
-    <div class="portal-icon">📊</div>
-    <h3>AKTU OneView</h3>
-    <p>Check semester results, back paper marks, and complete academic transcript history.</p>
-  </div>
-  <span class="portal-link-btn">Open OneView Portal &rarr;</span>
-</a>
+        <div class="card" style="text-align: center;">
+          <h3>ERP Login</h3>
+          <p style="font-size: 0.85rem; color: #888;">Student profile & exam forms</p>
+          <a href="https://erp.aktu.ac.in/" target="_blank" rel="noopener noreferrer" class="btn-view">Access Portal</a>
+        </div>
 
-        <a href="https://erp.aktu.ac.in/" target="_blank" rel="noopener noreferrer" class="portal-card">
-          <div>
-            <div class="portal-icon">🔐</div>
-            <h3>AKTU ERP Portal</h3>
-            <p>Fill exam forms, download admit cards, check fee status, and manage student profile.</p>
-          </div>
-          <span class="portal-link-btn">Open ERP Portal &rarr;</span>
-        </a>
+        <div class="card" style="text-align: center;">
+          <h3>Official Circulars</h3>
+          <p style="font-size: 0.85rem; color: #888;">Latest university updates & schedules</p>
+          <a href="https://aktu.ac.in/circulars.html" target="_blank" rel="noopener noreferrer" class="btn-view">View Circulars</a>
+        </div>
 
-        <a href="https://aktu.ac.in/syllabus.html" target="_blank" rel="noopener noreferrer" class="portal-card">
-          <div>
-            <div class="portal-icon">📚</div>
-            <h3>Official Syllabus PDFs</h3>
-            <p>Download official scheme and evaluation syllabus for all B.Tech branches and semesters.</p>
-          </div>
-          <span class="portal-link-btn">View Syllabus Directory &rarr;</span>
-        </a>
-
-        <a href="https://aktu.ac.in/circulars.html" target="_blank" rel="noopener noreferrer" class="portal-card">
-          <div>
-            <div class="portal-icon">📢</div>
-            <h3>Circulars & Notices</h3>
-            <p>Stay updated with official university press releases, exam schedules, and notifications.</p>
-          </div>
-          <span class="portal-link-btn">View Circulars &rarr;</span>
-        </a>
       </div>
     </section>
   </main>
-<script src="main.js"></script>
+
+  <button id="ai-chat-toggle" class="ai-chat-toggle">⚡ AKTU AI</button>
+
+  <div id="ai-chat-window" class="ai-chat-window ai-hidden">
+    <div class="ai-chat-header">
+      <span>AKTU AI Tutor</span>
+      <button id="ai-chat-close">&times;</button>
+    </div>
+    <div id="ai-chat-messages" class="ai-chat-messages">
+      <div class="ai-msg bot-msg">Hey! I'm your AKTU study assistant. Ask me anything about your syllabus or exam topics!</div>
+    </div>
+    <div class="ai-chat-input-area">
+      <input type="text" id="ai-chat-input" placeholder="Ask a question..." />
+      <button id="ai-chat-send">Send</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
