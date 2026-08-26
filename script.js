@@ -1,5 +1,5 @@
 // AI Chat Widget Configuration
-const GEMINI_API_KEY = "YOUR_GEMINI_API_KEY";
+const GEMINI_API_KEY = "AQ.Ab8RN6JrW-k6CiS7v9rPHvtos6Y8fgxOzIj_z1ksAHcu-l5t6g";
 
 document.addEventListener("DOMContentLoaded", () => {
   // -------------------------------------------------------------

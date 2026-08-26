@@ -12,25 +12,20 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [
-                {
-                  text: `You are an expert engineering tutor for AKTU university students. Provide concise, accurate, and easy-to-understand explanations for exam preparation.\n\nUser Question: ${message}`
-                }
-              ]
-            }
-          ]
-        })
-      }
-    );
-
+const response = await fetch(
+  `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [
+        {
+          parts: [{ text: `You are an expert engineering tutor for AKTU university students. Provide concise, accurate, and easy-to-understand explanations for exam preparation.\n\nUser Question: ${message}` }]
+        }
+      ]
+    })
+  }
+);
     const data = await response.json();
     const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, couldn't process an answer right now.";
 
